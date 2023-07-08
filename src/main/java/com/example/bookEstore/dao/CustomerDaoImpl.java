@@ -1,14 +1,14 @@
 package com.example.bookEstore.dao;
 
+import com.example.bookEstore.model.Customer;
+
 import java.util.List;
 
 import javax.sql.DataSource;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-
-import com.example.bookEstore.model.Customer;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Repository
 public class CustomerDaoImpl implements CustomerDao {

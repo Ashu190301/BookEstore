@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1" />
-<title>Customer login</title>
+<title>Customer Registration</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
@@ -87,6 +87,6 @@ input:hover {
 			</form>
 		</div>
 	</div>
-	<a href="registration">If you are a new user Register Here !</a>
+	<a href="registration">If you are a new user Regsiter Here !</a>
 </body>
 </html>

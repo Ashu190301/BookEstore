@@ -1,6 +1,6 @@
-<%@page import="java.sql.*"%>
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
+
 <head>
 <meta charset="ISO-8859-1">
 <title>Home</title>
@@ -9,6 +9,12 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap"
 	rel="stylesheet" />
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+	crossorigin="anonymous">
+
 <style>
 * {
 	font-family: "Poppins", sans-serif;
@@ -16,124 +22,88 @@
 }
 
 h3 {
-	margin-left: 40%;
+	margin: 5% 40%;
 	font-size: 30px;
 }
 
-h4 {
-	margin-left: 5%;
-	font-size: 15px;
+#imgBook {
+	margin: 20% 5%;
 }
 
-.main {
-	width: 50%;
-	margin-left: 25%;
-	border-radius: 5px;
-}
-
-table {
-	width: 100%;
-	border-collapse: collapse;
-}
-
-table td, table th {
-	border: 1px solid #ddd;
-	padding: 8px;
-	text-align: left;
-}
-
-table tr:nth-child(even) {
-	background-color: #f2f2f2;
-}
-
-table tr:hover {
-	background-color: #ddd;
-}
-
-table th {
-	background-color: #4CAF50;
-	color: white;
-}
-
-.button {
-	padding: 6px 12px;
-	background-color: #5dc4e3;
-	border: none;
-	color: white;
-	border-radius: 4px;
-	cursor: pointer;
-}
-
-nav {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 4px;
-	background-color: #2b2e2b;
-	color: white;
-}
-
-.nav-buttons button {
-	background-color: #5dc4e3;
-	border: none;
-	color: white;
-	border-radius: 6px;
-	cursor: pointer;
-	padding: 5px 10px;
+#filter {
+	margin-right: 2%;
+	text-align: center;
 }
 </style>
 </head>
+
 <body>
-	<nav>
-		<h4>Book-E-Store</h4>
-		<div class="nav-buttons">
-			<button onclick="window.location.href='http://localhost:9090/search';">Search</button>
-			<button onclick="window.location.href='http://localhost:9090/cart';">Cart</button>
+
+	<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="#">
+			<img src="https://www.pngall.com/wp-content/uploads/2018/05/Books-PNG.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
+			Book Store</a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item"><a class="nav-link active"
+						aria-current="page" href="/home">Home</a></li>
+					<li class="nav-item"><a class="nav-link" href="/cart">Cart</a></li>
+				</ul>
+				<form class="d-flex" action="/searchhandler" method="GET">
+					<select id="filter" name="filter">
+						<option value="title">search by title</option>
+						<option value="author">search by author</option>
+					</select> <input class="form-control me-2" type="search"
+						placeholder="Search" aria-label="Search" id="query" name="query">
+					<button class="btn btn-outline-success" type="submit">Search</button>
+				</form>
+			</div>
 		</div>
 	</nav>
-	<h3>Books Available</h3>
-	<div class="main">
-		<table>
-			<tr>
-				<th>Image</th>
-				<th>Barcode</th>
-				<th>Title</th>
-				<th>Author</th>
-				<th>Price</th>
-				<th>Quantity</th>
-				<th>Cart</th>
-			</tr>
-			<%
-			Connection conn = null;
-			Statement st = null;
-			ResultSet rs = null;
-			try {
-				Class.forName("com.mysql.cj.jdbc.Driver");
-				conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/springdb", "root", "ASD#air73");
-				st = conn.createStatement();
 
-				String qry = "select * from book";
-				rs = st.executeQuery(qry);
-				while (rs.next()) {
-			%>
-			<tr>
-				<td><img src="https://www.epw.in/system/files/book%20rev.png"
-					alt="Book Image" height="50"></td>
-				<td><%=rs.getString(1)%></td>
-				<td><%=rs.getString(2)%></td>
-				<td><%=rs.getString(3)%></td>
-				<td><%=rs.getString(4)%></td>
-				<td><%=rs.getString(5)%></td>
-				<td>
-					<button class="button" onclick="addtoCart()">Add to Cart</button>
-				</td>
-			</tr>
-			<%
-			}
-			} catch (Exception ex) {
-			}
-			%>
-		</table>
+	<h3>Books Available</h3>
+	<div class="container-md main">
+		<div class="row row-cols-1 row-cols-md-3 g-4">
+			<div class="col" th:each="book : ${booklist}">
+				<div class="card  mb-3 h-100 border-light" style="max-width: 540px;">
+					<div class="row g-0">
+						<div class="col-md-4">
+							<img  id="imgBook" src="https://pngimg.com/d/book_PNG51088.png"
+								class="img-fluid rounded-start" alt="Book Image">
+						</div>
+						<div class="col-md-8">
+							<div class="card-body">
+								<h5 class="card-title" th:text="${book.name}"></h5>
+								<p class="card-text">
+									Author: <span th:text="${book.author}"></span>
+								</p>
+								<p class="card-text">
+									Price: <span th:text="${book.price}"></span>
+								</p>
+								<p class="card-text">
+									Quantity: <span th:text="${book.quantity}"></span>
+								</p>
+								<a href="#" class="btn btn-primary">Add to Cart</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
+
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+		crossorigin="anonymous"></script>
 </body>
+
 </html>

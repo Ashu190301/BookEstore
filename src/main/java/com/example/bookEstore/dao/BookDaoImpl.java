@@ -25,5 +25,15 @@ public class BookDaoImpl implements BookDao {
 		List <Book> books = jdbcTemplate.query(SQL_SRCH_BOOK, new BookMapper());
 	      return books;
 	}
+	@Override
+	public List<Book> searchBookByAuthor(String bookAuthor) {
+		List <Book> books = jdbcTemplate.query(SQL_SRCH_BOOK, new BookMapper());
+	      return books;
+	}
+	@Override
+	public List<Book> showAllBooks() {
+		List <Book> books = jdbcTemplate.query(SQL_SRCH_BOOK, new BookMapper());
+	      return books;
+	}
 
 }
