@@ -16,7 +16,7 @@ public class ApplicationConfig {
 		dataSource.setUrl("jdbc:mysql://localhost:3306/springdb"); //change the database
 		dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
 		dataSource.setUsername("root");
-		dataSource.setPassword("ASD#air73");
+		dataSource.setPassword("Kid123");
 		
 		return dataSource;
 		

@@ -3,7 +3,7 @@
 
 <head>
 <meta charset="ISO-8859-1">
-<title>Home</title>
+<title>Search</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
@@ -38,10 +38,11 @@ h3 {
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+
+	<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
 		<div class="container-fluid">
 			<a class="navbar-brand" href="#">
-			<img src="https://www.pngall.com/wp-content/uploads/2018/05/Books-PNG.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
+			<img src="http://surl.li/ivvnp" alt="" width="30" height="24" class="d-inline-block align-text-top">
 			Book Store</a>
 			<button class="navbar-toggler" type="button"
 				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -54,7 +55,6 @@ h3 {
 					<li class="nav-item"><a class="nav-link active"
 						aria-current="page" href="/home">Home</a></li>
 					<li class="nav-item"><a class="nav-link" href="/cart">Cart</a></li>
-					<li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
 				</ul>
 				<form class="d-flex" action="/searchhandler" method="GET">
 					<select id="filter" name="filter">
@@ -68,16 +68,14 @@ h3 {
 		</div>
 	</nav>
 
-	
-	
-	<h3>Books Available</h3>
+	<h3>Results</h3>
 	<div class="container-md main">
 		<div class="row row-cols-1 row-cols-md-3 g-4">
 			<div class="col" th:each="book : ${booklist}">
 				<div class="card  mb-3 h-100 border-light" style="max-width: 540px;">
 					<div class="row g-0">
 						<div class="col-md-4">
-							<img  id="imgBook" src="https://pngimg.com/d/book_PNG51088.png"
+							<img id="imgBook" src="https://pngimg.com/d/book_PNG51088.png"
 								class="img-fluid rounded-start" alt="Book Image">
 						</div>
 						<div class="col-md-8">
