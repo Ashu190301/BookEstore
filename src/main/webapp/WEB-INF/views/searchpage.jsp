@@ -41,7 +41,7 @@ h3 {
 
 	<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="#">
+			<a class="navbar-brand" href="/home">
 			<img src="http://surl.li/ivvnp" alt="" width="30" height="24" class="d-inline-block align-text-top">
 			Book Store</a>
 			<button class="navbar-toggler" type="button"
@@ -55,6 +55,8 @@ h3 {
 					<li class="nav-item"><a class="nav-link active"
 						aria-current="page" href="/home">Home</a></li>
 					<li class="nav-item"><a class="nav-link" href="/cart">Cart</a></li>
+					<li class="nav-item"><a class="nav-link" href="/vieworder">My Orders</a></li>
+					<li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
 				</ul>
 				<form class="d-flex" action="/searchhandler" method="GET">
 					<select id="filter" name="filter">
@@ -68,7 +70,7 @@ h3 {
 		</div>
 	</nav>
 
-	<h3>Results</h3>
+	<h3 class="text-center">Results</h3>
 	<div class="container-md main">
 		<div class="row row-cols-1 row-cols-md-3 g-4">
 			<div class="col" th:each="book : ${booklist}">

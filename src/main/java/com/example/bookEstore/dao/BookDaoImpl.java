@@ -9,7 +9,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.example.bookEstore.model.Book;
-import com.example.bookEstore.dao.BookMapper;
 
 @Repository
 public class BookDaoImpl implements BookDao {

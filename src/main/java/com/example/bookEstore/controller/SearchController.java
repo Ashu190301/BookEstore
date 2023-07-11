@@ -49,16 +49,19 @@ public class SearchController {
 		if(email==null) {
 			return "redirect:/login";
 		}
-		System.out.println(filter);
 		List<Book> bookList= new ArrayList<>();
 		
-		if(filter.equals("title")) {
-			bookList = bookService.searchBookByName(query);
-			
+		if(query.length()>0) {
+			if(filter.equals("title")) {
+				bookList = bookService.searchBookByName(query);
+				
+			}
+			else {
+				bookList = bookService.searchBookByAuthor(query);
+			}
 		}
-		else {
-			bookList = bookService.searchBookByAuthor(query);
-		}
+		
+		
 		
 		model.addAttribute("booklist",bookList);
 		return "searchpage";

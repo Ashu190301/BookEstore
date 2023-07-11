@@ -34,7 +34,7 @@ public class RegistrationController {
 		session.setAttribute("email",null);
 		session.invalidate();
 		LOGGER.info("Sucessfully retuned loginpage");
-		return "loginpage";
+		return "redirect:/home";
 	}
 
 	@RequestMapping(path="/registrationhandler" , method=RequestMethod.POST)

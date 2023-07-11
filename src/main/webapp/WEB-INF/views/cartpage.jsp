@@ -3,7 +3,7 @@
 
 <head>
 <meta charset="ISO-8859-1">
-<title>Home</title>
+<title>Cart</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
@@ -22,24 +22,25 @@
 }
 
 h3 {
-	margin: 5% 40%;
+	margin: 5% 45%;
 	font-size: 30px;
 }
 
-#imgBook {
-	margin: 20% 5%;
-}
 
 #filter {
 	margin-right: 2%;
 	text-align: center;
 }
-
+#price{
+	text-align: center;
+	font-size: 20px;
+}
 
 </style>
 </head>
 
 <body>
+
 	<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
 		<div class="container-fluid">
 			<a class="navbar-brand" href="#"> <img
@@ -58,8 +59,7 @@ h3 {
 					<li class="nav-item"><a class="nav-link active"
 						aria-current="page" href="/home">Home</a></li>
 					<li class="nav-item"><a class="nav-link" href="/cart">Cart</a></li>
-					<li class="nav-item"><a class="nav-link" href="/vieworder">My
-							Orders</a></li>
+					<li class="nav-item"><a class="nav-link" href="/vieworder">My Orders</a></li>
 					<li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
 				</ul>
 				<form class="d-flex" action="/searchhandler" method="GET">
@@ -74,40 +74,30 @@ h3 {
 		</div>
 	</nav>
 
-
-
-	<h3 class="text-center">Books Available</h3>
-	<div class="container-md main">
-		<div class="row row-cols-1 row-cols-md-3 g-4">
-			<div class="col" th:each="book : ${booklist}">
-				<div class="card  mb-3 h-100 border-light" style="max-width: 540px;">
-					<div class="row g-0">
-						<div class="col-md-4">
-							<img id="imgBook" src="https://pngimg.com/d/book_PNG51088.png"
-								class="img-fluid rounded-start" alt="Book Image">
-						</div>
-						<div class="col-md-8">
-							<div class="card-body">
-								<h5 class="card-title" th:text="${book.name}"></h5>
-								<p class="card-text">
-									Author: <span th:text="${book.author}"></span>
-								</p>
-								<p class="card-text">
-									Price: <span th:text="${book.price}"></span>
-								</p>
-								<p class="card-text">
-									Quantity: <span th:text="${book.quantity}"></span>
-								</p>
-								<a th:href="@{/cart/{barcode}(barcode=${book.barcode})}"
-									class="btn btn-primary">Add to Cart</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+	<h3>Cart</h3>
+	<div class="container-sm">
+		<table class="table table-striped table-borderless align-middle table-responsive">
+			<tbody>
+				<tr th:each="book : ${booklist}">
+					<td><img id="imgBook"
+						src="https://pngimg.com/d/book_PNG51088.png"
+						class="d-inline-block" width="80" height="80" alt="Book Image"></td>
+					<td th:text="${book.name}"></td>
+					<td th:text="${book.author}"></td>
+					<td th:text="${book.price}"></td>
+					<td th:text="${book.quantity}"></td>
+					<td><a th:href="@{/remove/{barcode}(barcode=${book.barcode})}"
+						class="btn btn-danger">Delete</a></td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
-
+	<div class="text-center">
+		<p id="price">
+			Total Price: <span th:text="${totalCartPrice}"></span>
+		</p>
+		<a class="btn d-grid  col-6 btn-primary mx-auto" href="/placeorder">Place Order</a>
+	</div>
 
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
