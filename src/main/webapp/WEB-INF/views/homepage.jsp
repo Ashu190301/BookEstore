@@ -34,19 +34,15 @@ h3 {
 	margin-right: 2%;
 	text-align: center;
 }
-
-
 </style>
 </head>
 
 <body>
-	<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="#"> <img
-				src="https://www.pngall.com/wp-content/uploads/2018/05/Books-PNG.png"
-				alt="" width="30" height="24" class="d-inline-block align-text-top">
-				Book Store
-			</a>
+			<a class="navbar-brand" href="#">
+			<img src="https://www.pngall.com/wp-content/uploads/2018/05/Books-PNG.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
+			Book Store</a>
 			<button class="navbar-toggler" type="button"
 				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
 				aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -58,9 +54,8 @@ h3 {
 					<li class="nav-item"><a class="nav-link active"
 						aria-current="page" href="/home">Home</a></li>
 					<li class="nav-item"><a class="nav-link" href="/cart">Cart</a></li>
-					<li class="nav-item"><a class="nav-link" href="/vieworder">My
-							Orders</a></li>
-					<li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+					<li class="nav-item"><a class="nav-link" href="/vieworder">My Orders</a></li>
+					<li class="nav-item"><a class="nav-link" href="/logout" onclick="alert('logged out sucessfully')">Logout</a></li>
 				</ul>
 				<form class="d-flex" action="/searchhandler" method="GET">
 					<select id="filter" name="filter">
@@ -74,8 +69,8 @@ h3 {
 		</div>
 	</nav>
 
-
-
+	
+	
 	<h3 class="text-center">Books Available</h3>
 	<div class="container-md main">
 		<div class="row row-cols-1 row-cols-md-3 g-4">
@@ -83,7 +78,7 @@ h3 {
 				<div class="card  mb-3 h-100 border-light" style="max-width: 540px;">
 					<div class="row g-0">
 						<div class="col-md-4">
-							<img id="imgBook" src="https://pngimg.com/d/book_PNG51088.png"
+							<img  id="imgBook" src="https://pngimg.com/d/book_PNG51088.png"
 								class="img-fluid rounded-start" alt="Book Image">
 						</div>
 						<div class="col-md-8">
@@ -98,8 +93,7 @@ h3 {
 								<p class="card-text">
 									Quantity: <span th:text="${book.quantity}"></span>
 								</p>
-								<a th:href="@{/cart/{barcode}(barcode=${book.barcode})}"
-									class="btn btn-primary">Add to Cart</a>
+								<a th:href="@{/cart/{barcode}(barcode=${book.barcode})}" class="btn btn-primary" onclick="alert('Item added to cart')">Add to Cart</a>
 							</div>
 						</div>
 					</div>

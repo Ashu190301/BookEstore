@@ -1,5 +1,6 @@
 package com.example.bookEstore.service;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,13 +27,21 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public int placeOrder(String email) {
 		int noOfRow = orderDao.placeOrder(email);
+		orderDao.updateQuantityAfterOrderPlace(email);
 		centralCartDao.deleteAllFromCart(email);
+		
 		return noOfRow ;
 	}
 	@Override
 	public List<Order> viewOrder(String email) {
 		List<Order> orders = orderDao.viewOrder(email);
 		return orders;
+	}
+	@Override
+	public int cancelItem(String email, Date orderDate, String orderTime, String barcode) {
+		
+		return orderDao.cancelItem(email, orderDate, orderTime, barcode);
+		
 	}
 
 }

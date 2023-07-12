@@ -35,7 +35,6 @@ h3 {
 	text-align: center;
 	font-size: 20px;
 }
-
 </style>
 </head>
 
@@ -58,9 +57,9 @@ h3 {
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item"><a class="nav-link active"
 						aria-current="page" href="/home">Home</a></li>
-					<li class="nav-item"><a class="nav-link" href="/cart">Cart</a></li>
+					
 					<li class="nav-item"><a class="nav-link" href="/vieworder">My Orders</a></li>
-					<li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+					<li class="nav-item"><a class="nav-link" href="/logout" onclick="alert('logged out sucessfully')">Logout</a></li>
 				</ul>
 				<form class="d-flex" action="/searchhandler" method="GET">
 					<select id="filter" name="filter">
@@ -87,7 +86,7 @@ h3 {
 					<td th:text="${book.price}"></td>
 					<td th:text="${book.quantity}"></td>
 					<td><a th:href="@{/remove/{barcode}(barcode=${book.barcode})}"
-						class="btn btn-danger">Delete</a></td>
+						class="btn btn-danger" onclick="alert('item removed from cart')">Delete</a></td>
 				</tr>
 			</tbody>
 		</table>
@@ -96,7 +95,7 @@ h3 {
 		<p id="price">
 			Total Price: <span th:text="${totalCartPrice}"></span>
 		</p>
-		<a class="btn d-grid  col-6 btn-primary mx-auto" href="/placeorder">Place Order</a>
+		<a class="btn d-grid  col-6 btn-primary mx-auto" href="/placeorder" onclick="alert('order placed sucessfully')">Place Order</a>
 	</div>
 
 	<script

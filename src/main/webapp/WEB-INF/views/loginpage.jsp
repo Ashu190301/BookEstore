@@ -87,6 +87,6 @@ input:hover {
 			</form>
 		</div>
 	</div>
-	<a href="registration">If you are a new user Regsiter Here !</a>
+	<a href="registration">If you are a new user Register Here !</a>
 </body>
 </html>

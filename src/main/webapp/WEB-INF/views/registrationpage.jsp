@@ -79,28 +79,28 @@
         <form action="/registrationhandler" method="post">
           <label for="firstName">First Name:</label>
           <br />
-          <input type="text" name="firstName" id="firstName" pattern="[A-Z a-z ]+$" required/>
+          <input type="text" name="firstName" id="firstName" pattern="[A-Z a-z ]+$"  minlength="3"  maxlength="20" required/>
           <br />
 
           <label for="lastName">Last Name:</label>
           <br />
-          <input type="text" name="lastName" id="lastName" pattern="[A-Z a-z  ]+$" required/>
+          <input type="text" name="lastName" id="lastName" pattern="[A-Z a-z  ]+$"  minlength="3"  maxlength="20" required/>
           <br />
 
           <label for="addrs">Address:</label>
-          <input type="text" name="addrs" id="addrs" required/>
+          <input type="text" name="addrs" id="addrs" minlength="3"  maxlength="30" required/>
           <br />
          
           <br />
 
           <label for="email">Email:</label>
           <br />
-          <input type="email" name="email" id="email" />
+          <input type="email" name="email" id="email" required/>
           <br />
 
           <label for="pass">Password:</label>
           <br />
-          <input type="password" name="pass" id="pass" pattern="[A-Z a-z ]+$" required/>
+          <input type="password" name="pass" id="pass" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required/>
           <br />
           <br />
 

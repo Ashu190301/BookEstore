@@ -11,14 +11,16 @@ public class Order {
 	private int quantity;
 	private double orderValue;
 	private Date orderDate;
+	private String orderTime;
 	private Date deliveryDate;
+	private boolean isDelivered;
 	
 	public Order() {
 		
 	}
 
 	public Order(String email, String barcode, String bookName, String author, int quantity, double orderValue,
-			Date orderDate, Date deliveryDate) {
+			Date orderDate, String orderTime, Date deliveryDate, boolean isDelivered) {
 		super();
 		this.email = email;
 		this.barcode = barcode;
@@ -27,7 +29,9 @@ public class Order {
 		this.quantity = quantity;
 		this.orderValue = orderValue;
 		this.orderDate = orderDate;
+		this.orderTime = orderTime;
 		this.deliveryDate = deliveryDate;
+		this.isDelivered = isDelivered;
 	}
 
 	public String getEmail() {
@@ -86,6 +90,14 @@ public class Order {
 		this.orderDate = orderDate;
 	}
 
+	public String getOrderTime() {
+		return orderTime;
+	}
+
+	public void setOrderTime(String orderTime) {
+		this.orderTime = orderTime;
+	}
+
 	public Date getDeliveryDate() {
 		return deliveryDate;
 	}
@@ -94,14 +106,22 @@ public class Order {
 		this.deliveryDate = deliveryDate;
 	}
 
+	public boolean getIsDelivered() {
+		return isDelivered;
+	}
+
+	public void setIsDelivered(boolean isDelivered) {
+		this.isDelivered = isDelivered;
+	}
+
 	@Override
 	public String toString() {
 		return "Order [email=" + email + ", barcode=" + barcode + ", bookName=" + bookName + ", author=" + author
-				+ ", quantity=" + quantity + ", orderValue=" + orderValue + ", orderDate=" + orderDate
-				+ ", deliveryDate=" + deliveryDate + "]";
+				+ ", quantity=" + quantity + ", orderValue=" + orderValue + ", orderDate=" + orderDate + ", orderTime="
+				+ orderTime + ", deliveryDate=" + deliveryDate + ", isDelivered=" + isDelivered + "]";
 	}
-	
-	
+
+
 	
 
 }

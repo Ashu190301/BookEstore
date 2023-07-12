@@ -67,7 +67,7 @@ h5 {
 					<li class="nav-item"><a class="nav-link active"
 						aria-current="page" href="/home">Home</a></li>
 					<li class="nav-item"><a class="nav-link" href="/cart">Cart</a></li>
-					<li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+					<li class="nav-item"><a class="nav-link" href="/logout" onclick="alert('logged out sucessfully')">Logout</a></li>
 				</ul>
 				<form class="d-flex" action="/searchhandler" method="GET">
 					<select id="filter" name="filter">
@@ -107,9 +107,15 @@ h5 {
 						</li>
 					</ol>
 				</td>
-				<td><a
+				
+				<td>
+					 <a
 						th:href="@{/cancel/{barcode}/{orderdate}/{ordertime}(barcode=${order.barcode},orderdate=${order.orderDate},ordertime=${order.orderTime})}"
-						class="btn btn-danger">Cancel Item</a></td>
+						th:classappend="${order.isDelivered}? 'disabled'" onclick="alert('order canceled for the item')"
+						class="btn btn-danger">Cancel Item</a>
+				</td>
+				
+						
 			</tr>
 
 		</table>
