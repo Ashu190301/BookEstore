@@ -1,15 +1,16 @@
 # Book-E-Store
-# A simple online book store with features
+# A Simple Online Book Store With Features
 - Login/Logout
 - Redgistration
 - Search
 - Add to Cart
 - Order
 
-# System requirements
+# Used Language / Frameworks
 - Java
 - Mavan
 - Spring
+- Thymleaf
 - MySQL Workbanch
 
 # MySQL DATABASE Tables
